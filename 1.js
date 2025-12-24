@@ -95,8 +95,13 @@ export async function executeAction(battleSystem, actor, decision, parsed) {
         // Skill 2 Logic
         const target = decision.targets[0];
         uiManager.playVfx(actor, 'teleport'); // Digging effect
-        actor.x = target.x;
-        actor.y = target.y + 20;
+        // Move caster near target but clamp inside battlefield bounds to avoid pushing targets off-screen
+        const minX = (battleSystem.minX !== undefined) ? battleSystem.minX : 40;
+        const maxX = (battleSystem.maxX !== undefined) ? battleSystem.maxX : 860;
+        const minY = (battleSystem.minY !== undefined) ? battleSystem.minY : 80;
+        const maxY = (battleSystem.maxY !== undefined) ? battleSystem.maxY : 520;
+        actor.x = Math.max(minX, Math.min(maxX, target.x - 10));
+        actor.y = Math.max(minY, Math.min(maxY, target.y + 20));
         
         let dmg = 19 + (actor.effectiveAtk * 0.4);
         if (level >= 30) dmg *= 1.2;
@@ -105,7 +110,7 @@ export async function executeAction(battleSystem, actor, decision, parsed) {
         enemies.forEach(e => {
             const dist = Math.hypot(e.x - actor.x, e.y - actor.y);
             if (dist < 100) {
-                const res = e.receiveAction({ amount: dmg, type: 'physical', element: 'earth' });
+                const res = e.receiveAction({ amount: dmg, type: 'physical', element: 'earth', attackerAccuracy: 30 });
                 if (res.type !== 'miss') {
                     uiManager.showFloatingText(e, res.amount, 'damage-number earth');
                     uiManager.playVfx(e, 'earth');
