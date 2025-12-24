@@ -278,12 +278,19 @@ export async function executeAction(battle, actor, decision, parsed) {
             }
         });
 
-        // Shield: actor receives shield equal to 10% max HP (15% at level 200)
-        const shieldPct = (actor.data.level >= 200) ? 0.15 : 0.10;
-        const shieldAmt = Math.floor(actor.maxHp * shieldPct);
-        actor.receiveAction({ amount: shieldAmt, effectType: 'shield' });
-        battle.uiManager.showFloatingText(actor, 'SHIELD', 'status-text buff');
-        battle.uiManager.playVfx(actor, 'shield');
+        // Shield: avoid spamming — apply only if internal shield cooldown not active
+        if (!actor.cooldownTimers['batman_shield_internal']) {
+            const shieldPct = (actor.data.level >= 200) ? 0.15 : 0.10;
+            const shieldAmt = Math.floor(actor.maxHp * shieldPct);
+            actor.receiveAction({ amount: shieldAmt, effectType: 'shield' });
+            battle.uiManager.showFloatingText(actor, 'SHIELD', 'status-text buff');
+            battle.uiManager.playVfx(actor, 'shield');
+            // set short internal cooldown to prevent spamming the shield repeatedly
+            actor.cooldownTimers['batman_shield_internal'] = 10; // 10s internal shield cooldown
+        } else {
+            // Visual hint that shield was suppressed due to internal cooldown
+            battle.uiManager.showFloatingText(actor, 'SHIELD COOLDOWN', 'status-text');
+        }
         // cooldown/consume energy
         actor.energy = 0;
         actor.cooldownTimers["The Dark Knight's Descent"] = 45;
