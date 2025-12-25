@@ -151,7 +151,8 @@ export async function executeAction(battle, actor, decision, parsed) {
     if (hatred >= (parsed?.mechanics?.consumeHatredStun || 5)) {
       // consume all hatred
       actor.consumeResource ? actor.consumeResource('Hatred', hatred) : (actor.customResources['Hatred'] = 0);
-      primary.applyStatus({ type: 'stun', duration: 1.0, name: 'Crush_Stun' });
+      // Revamped Stun: Vader's crush is heavier
+      primary.applyStatus({ type: 'stun', duration: 1.5, name: 'Force Crush' });
       primary.applyStatus({ type: 'silence', duration: 3.0, name: 'Crush_Silence' });
       ui.showFloatingText(primary, 'STUNNED', 'status-text');
     }
@@ -193,7 +194,9 @@ export async function executeAction(battle, actor, decision, parsed) {
     enemiesPool.forEach(e => {
       const dist = Math.hypot(e.x - actor.x, e.y - actor.y);
       if (dist <= radius) {
-        const base = Math.floor(actor.effectiveMagicAtk * (parsed?.scalePct || 1.0));
+        // Mastery Milestone: Lv.50 Damage
+        const masteryMult = (actor.level >= 50) ? 1.15 : 1.0;
+        const base = Math.floor(actor.effectiveMagicAtk * (parsed?.scalePct || 1.0) * masteryMult);
         const total = Math.floor(base * (1 + bonusPct));
         const r = e.receiveAction({ amount: total, type: 'magic', attackerElement: 'dark' });
         ui.showFloatingText(e, r.amount, 'damage-number magic');

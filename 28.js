@@ -140,6 +140,8 @@ export async function executeAction(battle, actor, decision, parsed) {
     if (st === 'kinetic') {
       actor.applyStatus({ type: 'stance_kinetic', duration: parsed?.mechanics?.duration || 6, name: 'Kinetic_Stance', value: parsed?.mechanics?.kineticBonusPctOfSpeed || 0.10 });
       actor.applyStatus({ type: 'buff_speed', value: parsed?.mechanics?.kineticMovePct || 0.10, duration: parsed?.mechanics?.duration || 6, name: 'Kinetic_Speed' });
+      // Quality Bonus: High quality Lop gains extra tenacity in Kinetic stance
+      if (actor.quality >= 4) actor.applyStatus({ type: 'buff_tenacity', value: 25, duration: 6 });
       ui.showFloatingText(actor, 'Kinetic Stance', 'status-text buff');
     } else {
       // resonance

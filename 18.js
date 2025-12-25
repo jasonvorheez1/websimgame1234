@@ -243,6 +243,10 @@ export async function executeAction(battle, actor, decision, parsed) {
         const mech = parsed.mechanics;
         ui.showFloatingText(actor, "CALCULATING...", "status-text");
         
+        // Mastery Milestone: Lv.10 Cooldown reduction
+        if (actor.level >= 10) actor.cooldownTimers[decision.ability.name] = 8;
+        else actor.cooldownTimers[decision.ability.name] = 10;
+
         // Vanish / Invuln
         actor.applyStatus({ type: 'invulnerability', duration: 0.5 });
         ui.playVfx(actor, 'teleport');
@@ -263,7 +267,6 @@ export async function executeAction(battle, actor, decision, parsed) {
         const shieldAmt = Math.floor(actor.maxHp * mech.shieldPct);
         actor.receiveAction({ amount: shieldAmt, effectType: 'shield' });
         
-        actor.cooldownTimers[decision.ability.name] = 10;
         return;
     }
 

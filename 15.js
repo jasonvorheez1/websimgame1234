@@ -335,6 +335,8 @@ export async function executeAction(battle, actor, decision, parsed) {
 
     // COSMIC WEAVE: ULTIMATE
     if (name.includes('cosmic weave') || name.includes('celestial barrier') || decision.type === 'ultimate') {
+        // Mastery Milestone: Lv.50 pure damage/heal bonus
+        const masteryBonus = (lvl >= 50) ? 1.15 : 1.0;
         // Channel - during channel Angela is CC immune (we apply a temporary status)
         const mech = parsed.mechanics || {};
         const channel = mech.channel || 3;
@@ -356,12 +358,12 @@ export async function executeAction(battle, actor, decision, parsed) {
         const extraPct = ((magicDef / 10) * mech.shieldBonusPer10MagicDefPct) || 0;
         const totalShieldPct = shieldPctBase + extraPct;
 
-        // cleanse allies
+        // cleanse allies (Updated to include new status keywords)
         (battle.allies || []).forEach(a => {
             // remove detrimental effects (simple filter)
-            a.activeEffects = (a.activeEffects || []).filter(e => !['burn','poison','stun','freeze','silence','blind','debuff_atk','debuff_def','vulnerability_stack'].includes(e.type));
+            a.activeEffects = (a.activeEffects || []).filter(e => !['burn','poison','stun','freeze','silence','blind','debuff_atk','debuff_def','vulnerability_stack','charm','fear','exposed'].includes(e.type));
             // heal
-            const healAmt = Math.floor((a.maxHp || a.stats?.maxHp || 1000) * healPct);
+            const healAmt = Math.floor((a.maxHp || a.stats?.maxHp || 1000) * healPct * masteryBonus);
             const h = a.receiveAction({ amount: healAmt, effectType: 'heal' });
             ui.showFloatingText(a, `+${h.amount}`, 'damage-number heal');
             // shield

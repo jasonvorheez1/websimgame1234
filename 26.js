@@ -206,9 +206,15 @@ export async function executeAction(battle, actor, decision, parsed) {
       if (!target) continue;
       ui.showProjectile(actor, target, 'proj_fire');
       await wait(180 + i * 60);
+      
+      // Mastery Milestone: Lv.25 Crit Chance boost
+      const baseCrit = actor.stats.luck || 10;
+      const finalCrit = (actor.level >= 25) ? baseCrit + 15 : baseCrit;
+      const isCrit = guaranteeCrit || (Math.random() * 100 < finalCrit);
+
       const dmg = Math.floor(actor.effectiveAtk * (parsed?.scalePct || 0.9));
-      const res = target.receiveAction({ amount: dmg, type: 'physical', isCrit: guaranteeCrit, attackerElement: 'fire' });
-      ui.showFloatingText(target, res.amount, `damage-number ${guaranteeCrit ? 'crit' : ''}`);
+      const res = target.receiveAction({ amount: dmg, type: 'physical', isCrit: isCrit, attackerElement: 'fire' });
+      ui.showFloatingText(target, res.amount, `damage-number ${isCrit ? 'crit' : ''}`);
       // apply Disrupt stacks (reduce magic def)
       target.applyStatus({ type: 'debuff_magicdef', duration: guaranteeCrit ? 6 : 4, value: -0.05, stackLimit: 3, name: 'Disrupt' });
       ui.playVfx(target, 'vfx_explosion');

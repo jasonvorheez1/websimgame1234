@@ -94,7 +94,8 @@ export function getParsedAbility(charName, abilityName, description = "", skillL
                 enemyHealReduce: skillLevel >= 200 ? 0.75 : 0.50,
                 enemySpeedReduce: 0.30,
                 allyDespairPerSec: 2,
-                allyDmgPerDespair: 0.20
+                allyDmgPerDespair: 0.20,
+                charmChance: skillLevel >= 25 ? 0.15 : 0.05 // New: Revamped Charm system integration
             },
             visualKeyword: 'vfx-dark-void'
         };
@@ -355,11 +356,17 @@ export async function executeAction(battle, actor, decision, parsed) {
             sourceId: actor.id
         });
 
+        // Revamped Charm check: Chance to possess enemies in the field
+        const enemies = (actor.team === 'ally' ? battle.enemies : battle.allies).filter(e => !e.isDead);
+        enemies.forEach(e => {
+            if (Math.random() < mech.charmChance) {
+                e.applyStatus({ type: 'charm', duration: 2.5, name: 'Incubator Possession' });
+                ui.showFloatingText(e, "POSSESSED", "status-text");
+            }
+        });
+
         // Immune to statuses while active
         actor.applyStatus({ type: 'invulnerability', duration: mech.duration });
-
-        // The logic for draining energy and applying effects to allies/enemies is handled in updatePassives
-        // by checking for 'inhibition_field_active' status.
         
         actor.cooldownTimers[decision.ability.name] = 20;
         return;

@@ -262,13 +262,18 @@ export async function executeAction(battle, actor, decision, parsed) {
       // apply damage
       const res = target.receiveAction({ amount: perHitDmg, type: 'physical', attackerElement: 'ice', attackerAccuracy: 15 });
       ui.showFloatingText(target, res.amount, 'damage-number');
-      // apply Holiday Dread stack (debuff atk %)
+      // apply Holiday Dread stack (Revamped: small chance to Charm on hit)
       const existing = target.activeEffects.find(e => e.type === 'holiday_dread');
       if (existing) {
         existing.stacks = Math.min(10, (existing.stacks||0) + 1);
         existing.duration = 5;
       } else {
         target.applyStatus({ type: 'holiday_dread', stacks: 1, value: 0.03, duration: 5 });
+      }
+
+      if (Math.random() < 0.04) {
+          target.applyStatus({ type: 'charm', duration: 1.0, name: 'Holiday Spirit' });
+          ui.showFloatingText(target, "CHARMED", "status-text");
       }
       // apply stack effect: reduce attack by 3% per stack (engine will read holiday_dread if used downstream)
       // small heal to allies near ornament if high-level upgrade exists (handled by parser flags; simple imitation:)
