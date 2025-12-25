@@ -100,19 +100,21 @@ export async function decideAction(actor, enemies, allies, battle){
         return { ability: kirin, targets: live.slice(0,6), type:'ultimate' };
     }
 
-    // Use Chidori immediately if off cooldown
+    // Prefer Chidori for single high-value / low-count targets or to secure executes
     if (chidori && !actor.cooldownTimers?.[chidori.name]) {
-        return { ability: chidori, targets:[live.sort((a,b)=> (a.currentHp/a.maxHp)-(b.currentHp/b.maxHp))[0] ], type:'skill' };
+        if (live.length <= 2) return { ability: chidori, targets:[live.sort((a,b)=> (a.currentHp/a.maxHp)-(b.currentHp/b.maxHp))[0] ], type:'skill' };
+        // if have 3 insight stacks, prefer chidori to consume reduced cd effect
+        if (insightStacks >= 3) return { ability: chidori, targets:[live[0]], type:'skill' };
     }
 
-    // Use Fireball immediately if off cooldown
+    // Use Fireball when 2+ enemies clustered or when can apply lingering area
     if (fireball && !actor.cooldownTimers?.[fireball.name]) {
-        const best = live.sort((a,b) => {
-            const ca = live.filter(o => Math.hypot(o.x - a.x, o.y - a.y) <= 140).length;
-            const cb = live.filter(o => Math.hypot(o.x - b.x, o.y - b.y) <= 140).length;
-            return cb - ca;
-        })[0] || live[0];
-        return { ability: fireball, targets:[best], type:'skill' };
+        let best=null, bestCount=0;
+        for (const e of live){
+            const cnt = live.filter(o=>Math.hypot(o.x-e.x,o.y-e.y)<=140).length;
+            if (cnt>bestCount){ bestCount=cnt; best=e; }
+        }
+        if (bestCount>=2) return { ability: fireball, targets:[best], type:'skill' };
     }
 
     // If low HP or under pressure, basic attack / reposition
