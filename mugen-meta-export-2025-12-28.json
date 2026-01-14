@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-01-14T18:43:16.344Z",
+  "exportedAt": "2026-01-14T18:46:31.506Z",
   "settings": {
     "collections": {
       "characters": true,
@@ -33,7 +33,7 @@
           "magic atk": 25,
           "magic def": 33
         },
-        "imageUrl": "blob:https://9p88s3ucgryoknrh_htw.c.websim.com/51382bde-819d-4184-b52b-b2a56f61851c",
+        "imageUrl": "https://api.websim.com/blobs/019bbdd2-b13e-75ee-9fee-c9ad5f038a31.webp",
         "abilities": [
           {
             "name": "Basic Attack",
@@ -3156,16 +3156,16 @@
         "name": "Thor",
         "role": "utility",
         "stats": {
-          "hp": 324,
-          "Def": 11,
-          "atk": 9,
-          "luck": 5,
-          "speed": 10,
-          "max hp": 324,
-          "evasion": 5,
-          "tenacity": 6,
-          "magic atk": 9,
-          "magic def": 10
+          "hp": 450,
+          "Def": 21,
+          "atk": 16,
+          "luck": 9,
+          "speed": 16,
+          "max hp": 450,
+          "evasion": 9,
+          "tenacity": 10,
+          "magic atk": 17,
+          "magic def": 18
         },
         "imageUrl": "https://api.websim.com/blobs/019bb95d-730b-713d-a60d-b724595a51f5.png",
         "abilities": [
@@ -3316,16 +3316,16 @@
         "name": "Hulk",
         "role": "tank",
         "stats": {
-          "hp": 297,
-          "Def": 10,
-          "atk": 10,
-          "luck": 5,
-          "speed": 10,
-          "max hp": 297,
-          "evasion": 5,
-          "tenacity": 5,
-          "magic atk": 10,
-          "magic def": 10
+          "hp": 532,
+          "Def": 26,
+          "atk": 18,
+          "luck": 9,
+          "speed": 16,
+          "max hp": 533,
+          "evasion": 8,
+          "tenacity": 15,
+          "magic atk": 12,
+          "magic def": 27
         },
         "imageUrl": "https://api.websim.com/blobs/019bb95d-638b-7268-b784-c8706c9a0b86.png",
         "abilities": [
@@ -5111,6 +5111,18 @@
       {
         "name": "Trixie",
         "role": "tank",
+        "stats": {
+          "hp": 1128,
+          "Def": 67,
+          "atk": 38,
+          "luck": 14,
+          "speed": 28,
+          "max hp": 938,
+          "evasion": 14,
+          "tenacity": 39,
+          "magic atk": 18,
+          "magic def": 70
+        },
         "imageUrl": "https://api.websim.com/blobs/019bb989-b1d5-778c-901e-024123d6108f.webp",
         "abilities": [
           {
@@ -5560,23 +5572,44 @@
         "imageUrl": "https://api.websim.com/blobs/019bb93e-55a9-7536-9e27-38aa16fd4295.webp",
         "abilities": [
           {
-            "name": "Sovereign Bloom",
+            "name": "Basic Attack",
             "tags": [
+              "atk",
               "Wind",
-              "shield",
-              "atk"
+              "single target"
             ],
             "type": "Active",
             "upgrades": [
-              "Lv10: enhances wind potency and slightly reduces cooldown.",
-              "Lv50: unlocks a secondary effect (e.g., brief slow or shield conversion).",
-              "Lv100: improves scaling and adds a small team-support interaction."
+              "Lv10: +small damage scaling",
+              "Lv50: +bonus crit chance / improved multi-hit interactions",
+              "Lv100: base damage increases and minor utility interaction"
+            ],
+            "mechanics": [
+              "Ranged single strike.",
+              "Scales with ATK."
+            ],
+            "properties": [
+              "aoe"
+            ],
+            "description": "Ranged basic attack dealing physical damage; elemental: Wind.",
+            "unlockLevel": 1
+          },
+          {
+            "name": "Pearl Constriction",
+            "tags": [
+              "Support",
+              "Shield",
+              "CrowdControl"
+            ],
+            "type": "Active",
+            "upgrades": [
+              "Lv10: Shield size is increased.",
+              "Lv50: The stun duration increases.",
+              "Lv100: Grants minor regeneration to the target."
             ],
             "mechanics": [],
-            "properties": [
-              "shield"
-            ],
-            "description": "Sovereign Bloom — a wind single-target providing supportive utility that reflects the essence of Rachel Bighead. As a Support, On cast: this ability targets a single enemy at short range, dealing precisely tuned wind damage. The strike is designed with a specific frame data profile: it triggers a singular, heavy-impact blow. Mechanically, the damage output scales primarily with the character's ATK stat, while deriving secondary potency from Luck and critical hit modifiers. Furthermore, the ability applies a primary elemental interaction. This move should be used strategically in a rotation, ideally after gap-closers or as a decisive finisher for low-HP foes.",
+            "description": "Pearl Constriction: Rachel focuses her innate abilities into generating an escalating series of magically animated pearl-like orbs. Upon successful cast, Rachel manifests a shimmering field of pearlescent energy around a targeted ally within a medium-range radius. This iridescent sphere provides immediate defensive reinforcement. More specifically, the pearls whirl, granting a substantial shield to the target based on Rachel's defense and a percentage of the target's max HP. In addition, should the shielded ally become struck, the pearls, upon shattering, unleash a brief, yet potent stun effect upon any nearby enemies. This stun offers crucial crowd control, granting the team opportunities for strategic repositioning. Furthermore, the shards left after the shield shatters apply a stacking debuff to all impacted foes, which marginally reduces their outgoing damage to Rachel for a moderate duration. Careful positioning and timing are key to maximize its utility.",
+            "flavorQuote": "Sometimes, the best defense is a well-placed… necklace?",
             "unlockLevel": 1
           },
           {
@@ -6134,16 +6167,16 @@
         "name": "Yuri",
         "role": "damage",
         "stats": {
-          "hp": 264,
-          "Def": 10,
-          "atk": 9,
-          "luck": 5,
-          "speed": 10,
-          "max hp": 264,
-          "evasion": 5,
-          "tenacity": 5,
-          "magic atk": 9,
-          "magic def": 10
+          "hp": 450,
+          "Def": 13,
+          "atk": 25,
+          "luck": 10,
+          "speed": 19,
+          "max hp": 450,
+          "evasion": 8,
+          "tenacity": 8,
+          "magic atk": 11,
+          "magic def": 13
         },
         "imageUrl": "https://api.websim.com/blobs/019bb93e-280d-7493-8e40-df962f8377a5.webp",
         "abilities": [
@@ -6279,6 +6312,18 @@
       {
         "name": "Natsuki",
         "role": "healer",
+        "stats": {
+          "hp": 979,
+          "Def": 39,
+          "atk": 28,
+          "luck": 23,
+          "speed": 44,
+          "max hp": 939,
+          "evasion": 15,
+          "tenacity": 37,
+          "magic atk": 70,
+          "magic def": 73
+        },
         "imageUrl": "https://api.websim.com/blobs/019bb93e-7ea2-733f-a54b-a87ec5906692.webp",
         "abilities": [
           {
@@ -13268,16 +13313,16 @@
         "name": "Veemon",
         "role": "support",
         "stats": {
-          "hp": 340,
-          "Def": 21,
-          "atk": 10,
-          "luck": 11,
-          "speed": 18,
-          "max hp": 331,
-          "evasion": 8,
-          "tenacity": 11,
-          "magic atk": 19,
-          "magic def": 28
+          "hp": 450,
+          "Def": 28,
+          "atk": 15,
+          "luck": 16,
+          "speed": 23,
+          "max hp": 456,
+          "evasion": 12,
+          "tenacity": 15,
+          "magic atk": 28,
+          "magic def": 39
         },
         "imageUrl": "https://api.websim.com/blobs/019ba611-1196-7239-b71e-c43145f07b02.webp",
         "abilities": [
@@ -23171,18 +23216,18 @@
       },
       {
         "name": "Gumball",
-        "role": "Mischief Mage",
+        "role": "damage",
         "stats": {
-          "hp": 416,
-          "Def": 19,
+          "hp": 450,
+          "Def": 24,
           "atk": 19,
-          "luck": 10,
-          "speed": 17,
-          "max hp": 419,
-          "evasion": 8,
-          "tenacity": 12,
-          "magic atk": 14,
-          "magic def": 19
+          "luck": 12,
+          "speed": 19,
+          "max hp": 463,
+          "evasion": 9,
+          "tenacity": 14,
+          "magic atk": 20,
+          "magic def": 21
         },
         "imageUrl": "https://api.websim.com/blobs/019b95dd-ce76-70b5-b2bf-785a0c9ce80d.webp",
         "abilities": [
@@ -23228,23 +23273,26 @@
             "unlockLevel": 1
           },
           {
-            "name": "Focused Guard",
+            "name": "Cardboard Catastrophe",
             "tags": [
-              "Ice",
-              "heal",
-              "atk"
+              "Physical",
+              "Crowd Control",
+              "Debuff",
+              "Chaos"
             ],
             "type": "Active",
             "upgrades": [
-              "Lv10: enhances ice potency and slightly reduces cooldown.",
-              "Lv50: unlocks a secondary effect (e.g., brief slow or shield conversion).",
-              "Lv100: improves scaling and adds a small team-support interaction."
+              "Lv10: Increases the base damage of Cardboard Catastrophe and the severity of the Papercuts debuff.",
+              "Lv50: Cardboard Catastrophe now has a chance to spawn a sentient cardboard box minion that fights alongside Gumball for a short duration.",
+              "Lv100: Upon impact, Cardboard Catastrophe grants a small shield to all allies within the area, made of… you guessed it, more cardboard!"
             ],
-            "mechanics": [],
-            "properties": [
-              "heal"
+            "mechanics": [
+              "AoE Damage",
+              "Debuff Application",
+              "Chance-Based Effect"
             ],
-            "description": "Focused Guard — a ice single-target providing supportive utility that reflects the essence of Gumball. As a Mischief Mage, On cast: this ability targets a single enemy at short range, dealing precisely tuned ice damage. The strike is designed with a specific frame data profile: it triggers a singular, heavy-impact blow. Mechanically, the damage output scales primarily with the character's ATK stat, while deriving secondary potency from Luck and critical hit modifiers. Furthermore, the ability applies a primary elemental interaction. This move should be used strategically in a rotation, ideally after gap-closers or as a decisive finisher for low-HP foes.",
+            "description": "Cardboard Catastrophe epitomizes Gumball's chaotic ingenuity. Upon activation, Gumball frantically rummages through an unseen pocket dimension, conjuring forth a precariously assembled fortress constructed entirely of cardboard boxes, duct tape, and sheer, unadulterated optimism. This 'fortress' is then hurled, with surprising velocity and questionable structural integrity, towards a designated target area. On impact, the Cardboard Catastrophe unleashes a series of unpredictable effects: First, it deals a modest amount of Physical damage in an area, with cardboard shrapnel spreading to adjacent enemies, applying a stacking debuff called 'Papercuts.' Each stack of Papercuts slightly reduces enemy attack speed and evasion. Furthermore, due to the haphazard nature of its construction, there's a chance (scaling with Gumball's Luck stat) that the fortress will spontaneously disassemble, releasing a swarm of angry hornets (purely cosmetic, but terrifying) or a rogue vacuum cleaner that briefly pulls enemies closer. The attack prioritizes enemies who are inflicted with other status ailments and has an equal chance to target any opponent within the targeting area if none are afflicted.",
+            "flavorQuote": "Trust me, this is a *totally* foolproof plan!",
             "unlockLevel": 29
           },
           {
@@ -46390,6 +46438,29 @@
         "imageUrl": "https://api.websim.com/blobs/019b4131-a088-771e-97c2-09496b3d4fa6.png",
         "abilities": [
           {
+            "name": "Basic Attack",
+            "tags": [
+              "atk",
+              "Fire",
+              "single target"
+            ],
+            "type": "Active",
+            "upgrades": [
+              "Lv10: +small damage scaling",
+              "Lv50: +bonus crit chance / improved multi-hit interactions",
+              "Lv100: base damage increases and minor utility interaction"
+            ],
+            "mechanics": [
+              "Ranged single strike.",
+              "Scales with ATK."
+            ],
+            "properties": [
+              "aoe"
+            ],
+            "description": "Ranged basic attack dealing physical damage; elemental: Fire.",
+            "unlockLevel": 1
+          },
+          {
             "name": "Pie in the Face",
             "tags": [
               "atk",
@@ -46494,23 +46565,26 @@
             "unlockLevel": 10
           },
           {
-            "name": "Sovereign Rend",
+            "name": "Pie-Eyed Panic!",
             "tags": [
-              "Electric",
-              "reliable",
-              "atk"
+              "Projectile",
+              "Debuff",
+              "Chaos",
+              "Physical"
             ],
             "type": "Ultimate",
             "upgrades": [
-              "Lv10: enhances electric potency and slightly reduces cooldown.",
-              "Lv50: unlocks a secondary effect (e.g., brief slow or shield conversion).",
-              "Lv100: improves scaling and adds a small team-support interaction."
+              "Lv10: Increases the 'Greased' debuff duration and potency.",
+              "Lv50: 'Sugar Rush' now has a small chance to inflict 'Diabetes' instead, dealing damage over time and reducing healing received.",
+              "Lv100: When Krusty critically strikes with a pie, he spontaneously generates a single, perfectly-aimed pie that targets the enemy with the highest ATK, interrupting their current action."
             ],
-            "mechanics": [],
-            "properties": [
-              "reliable"
+            "mechanics": [
+              "Cone Area",
+              "Multiple Projectiles",
+              "Chance-Based Debuff"
             ],
-            "description": "Sovereign Rend — a electric single-target a reliable damage option that reflects the essence of Krusty The Clown. As a bruiser, On cast: this ability targets a single enemy at short range, dealing precisely tuned electric damage. The strike is designed with a specific frame data profile: it triggers a singular, heavy-impact blow. Mechanically, the damage output scales primarily with the character's ATK stat, while deriving secondary potency from Luck and critical hit modifiers. Furthermore, the ability applies a primary elemental interaction. This move should be used strategically in a rotation, ideally after gap-closers or as a decisive finisher for low-HP foes.",
+            "description": "Krusty, in a fit of nostalgic pandemonium fueled by decades of low-quality entertainment and questionable dietary choices, unleashes a projectile barrage of poorly-aimed pies! Upon activation, Krusty winds up with exaggerated, cartoonish movements, before launching a volley of cream pies in a wide, cone-shaped area directly in front of him. Each pie impact deals a moderate amount of physical damage and applies the 'Greased' debuff, reducing enemy evasion and move speed by 15% for a short duration. Furthermore, there is a small chance per pie projectile to inflict the 'Sugar Rush' status, which causes the target to become frenzied and attack the nearest unit (friend or foe!) for an even shorter duration. The number of pies scales with Krusty's attack speed and Luck stats. This Ultimate ability is best used to disrupt tightly packed groups of enemies, creating chaos and briefly hindering their ability to coordinate effectively. Remember, timing is everything... and the aim is usually terrible! It's all part of the show, man!",
+            "flavorQuote": "\"Hey hey! Take some cream! It's... uh... good for ya!\"",
             "unlockLevel": 2
           }
         ],
@@ -52991,23 +53065,51 @@
         "imageUrl": "https://api.websim.com/blobs/019b466e-0efc-7707-9f66-0a4c30d4b88e.webp",
         "abilities": [
           {
-            "name": "Primal Bind",
+            "name": "Basic Attack",
             "tags": [
-              "Dark",
-              "heal",
-              "atk"
+              "atk",
+              "Light",
+              "single target"
             ],
             "type": "Active",
             "upgrades": [
-              "Lv10: enhances dark potency and slightly reduces cooldown.",
-              "Lv50: unlocks a secondary effect (e.g., brief slow or shield conversion).",
-              "Lv100: improves scaling and adds a small team-support interaction."
+              "Lv10: +small damage scaling",
+              "Lv50: +bonus crit chance / improved multi-hit interactions",
+              "Lv100: base damage increases and minor utility interaction"
             ],
-            "mechanics": [],
+            "mechanics": [
+              "Ranged single strike.",
+              "Scales with ATK."
+            ],
             "properties": [
-              "heal"
+              "aoe"
             ],
-            "description": "Primal Bind — a dark single-target providing supportive utility that reflects the essence of Sam Manson. As a support, On cast: this ability targets a single enemy at short range, dealing precisely tuned dark damage. The strike is designed with a specific frame data profile: it triggers a singular, heavy-impact blow. Mechanically, the damage output scales primarily with the character's ATK stat, while deriving secondary potency from Luck and critical hit modifiers. Furthermore, the ability applies a primary elemental interaction. This move should be used strategically in a rotation, ideally after gap-closers or as a decisive finisher for low-HP foes.",
+            "description": "Ranged basic attack dealing physical damage; elemental: Light.",
+            "unlockLevel": 1
+          },
+          {
+            "name": "Vegetarian Vamp",
+            "tags": [
+              "Nature",
+              "Debuff",
+              "Heal",
+              "Support"
+            ],
+            "type": "Active",
+            "upgrades": [
+              "Lv10: Increase debuff potency (ATK drain) and reduce ability cooldown.",
+              "Lv50: Compost debuff stacks an additional time and grants a brief burst of movement speed to allies when fully stacked on an enemy.",
+              "Lv100: Adds an HP regeneration effect to the targeted ally, further enhancing survivability."
+            ],
+            "mechanics": [
+              "Slow",
+              "ATK Drain",
+              "Healing Redistribution",
+              "Resistance Debuff",
+              "Stacking Debuff"
+            ],
+            "description": "Vegetarian Vamp — a transformative, debuff-focused support ability reflective of Sam's unique brand of rebellion. On activation, Sam manifests a spectral aura of raw, untamed nature, channeling the earth's primal energies. This manifests visually as thorny vines that erupt from the ground in a targeted area, ensnaring enemies within a moderate radius. These vines not only impede the movement of affected foes, inflicting a potent slowing effect (reducing movement speed by 40% for a duration of 5 seconds), but also drain a percentage of their attack power (reducing ATK by 15% for the same duration), redistributing a portion of it to the ally with the lowest current health. The amount of ATK drained and granted scales modestly with Sam's elemental mastery stat and total HP. Furthermore, each enemy trapped within the Vegetarian Vamp is afflicted with a stacking 'Compost' debuff. Each stack of Compost reduces the affected enemy's resistance to nature-based damage by 3%, up to a maximum of 9%. Aesthetically, the ability showcases dark purples and vibrant greens, mirroring Sam's signature color palette.",
+            "flavorQuote": "It's not easy being green... especially when you're a goth.",
             "unlockLevel": 15
           },
           {
